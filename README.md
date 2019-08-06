@@ -12,7 +12,7 @@ cd docker-awesome
 ```
 
 
-Install Docker Engine CE v18.06.1 (Free Version)
+Install Docker Engine CE v19.03.1 (Free Version)
 ---------------------------------------------------
 
 ```
@@ -20,7 +20,7 @@ bash docker-install/install-docker-engine-on-ubuntu18.sh
 ```
 
 
-Install Docker Compose v1.22.0
+Install Docker Compose v1.24.0
 ---------------------------------------------------
 
 ```
@@ -32,13 +32,13 @@ Start Service | Phalcon Application Template
 ---------------------------------------------------
 
 ```
-sudo git clone https://github.com/codestepz/phalcon3-share-template.git
+sudo git clone https://github.com/nextfusion/phalcon3-share-template.git
 sudo docker-compose -f phalcon3-share-template/example.com-deploy/docker-compose.yml up -d
 chmod 0777 -R phalcon3-share-template/example.com-main/runtime
 ```
 
 ```
-http://[IP ADDRESS] << Nginx v1.15.4-alpine
+http://[IP ADDRESS] << Nginx v1.16.0-alpine
 
-http://[IP ADDRESS]/info.php << PHP v7.2.10 (FPM) 
+http://[IP ADDRESS]/info.php << PHP v7.3.7 (FPM) 
 ```
