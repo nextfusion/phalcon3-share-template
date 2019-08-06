@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <?php echo $this->seo->getTitle(!empty($pageTitle) ? $pageTitle : null); ?>
+        <?php echo $this->seo->getFavicon(); ?>
+        <?php echo $this->seo->getProperty([(!empty($pageTitle) ? $pageTitle : null), (!empty($pageDescription) ? $pageDescription : null), (!empty($pageKeyword) ? $pageKeyword : null), (!empty($pageUrl) ? $pageUrl : null), (!empty($pageImage) ? $pageImage : null)]); ?>
+        <base href="{{ url('') }}" />
+        {{ assets.outputCss('cssHeader') }}
+        {{ assets.outputJs('jsHeader') }}
+        {% block scriptHeader %} {% endblock %}
+    </head>
+    <body>
+        {% block header %} {% endblock %}
+        {% block content %}
+            {{ content() }}
+        {% endblock %}
+        {% block footer %} {% endblock %}
+        {{ assets.outputCss('cssFooter') }}
+        {{ assets.outputJs('jsFooter') }}
+        {% block scriptMainFooter %} {% endblock %}
+        {% block scriptFooter %}  {% endblock %}
+        <?php echo $this->seo->getGoogleAnalysis(); ?>
+    </body>
+</html>

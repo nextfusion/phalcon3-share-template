@@ -1,0 +1,65 @@
+version: '3.3'
+
+services:
+
+# ======================================================================
+# Database
+# ======================================================================
+
+  mongodb01:
+    image: mongo:3.7.1
+    container_name: example-mongodb01
+    working_dir: /backup
+    restart: always
+    environment:
+      - VIRTUAL_PORT=27017
+      - AUTH=no
+      - TERM=xterm
+    volumes:
+      - ./../../example.com-deploy/database/mongo01:/data/db
+      - ./../../example.com-deploy/database/conf.d/mongo01.conf:/etc/mongod.conf
+    ports:
+      - "27017:27017"
+    networks:
+      - database_network
+
+  mariadb01:
+    image: mariadb:10.3.4
+    container_name: codestep-mariadb01
+    working_dir: /backup
+    restart: always
+    environment:
+      - VIRTUAL_PORT=3306
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=db2_base
+#     - MYSQL_USER=admin
+#     - MYSQL_PASSWORD=123456
+      - TERM=xterm
+    volumes:
+      - ./../../example.com-deploy/database/maria01:/var/lib/mysql
+      - ./../../example.com-deploy/database/conf.d/maria01.cnf:/etc/mysql/my.cnf
+    ports:
+      - "3306:3306"
+    command: mysqld --innodb-buffer-pool-size=20M
+    networks:
+      - database_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.7.7-1
+    container_name: codemaxz-phpmyadmin
+    restart: always
+    environment:
+      - VIRTUAL_PORT=8080
+      - PMA_HOST=mariadb
+#     - PMA_USER=admin
+#     - PMA_PASSWORD=123456
+      - TERM=xterm
+    links:
+      - "mariadb01:mariadb"
+    ports:
+      - "8080:80"
+    networks:
+      - database_network
+
+networks:
+  database_network:

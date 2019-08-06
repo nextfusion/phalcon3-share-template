@@ -1,0 +1,22 @@
+{
+    "name": "nextfusion/phalcon3-share-template",
+    "description": "Phalcon Framework - Shared Project and Web Application Template",
+    "keywords": ["phalcon3","share","template"],
+    "homepage": "https://github.com/nextfusion/phalcon3-share-template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eakkabin Jaikeawma <eakkabin_it@hotmail.com>",
+            "email": "eakkabin_it@hotmail.com",
+            "homepage": "https://nextfusion.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "phalcon/incubator": "^3.4"
+    },
+    "config": {
+        "vendor-dir": "Vendor"
+    }
+}

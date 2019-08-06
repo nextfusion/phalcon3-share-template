@@ -1,0 +1,9 @@
+/_local_
+
+/nbproject
+/node_modules
+
+/application/sources
+/public/sources
+
+!.gitignore

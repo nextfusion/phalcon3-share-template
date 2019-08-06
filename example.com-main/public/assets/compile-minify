@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scss --watch scss/build-theme.scss:styles/build-theme.min.css --style compressed --no-cache
